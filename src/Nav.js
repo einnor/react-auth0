@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 class Nav extends Component {
   render() {
+    const { isAuthenticated, login, logout } = this.props.auth;
     return (
       <nav>
         <ul>
@@ -12,6 +13,12 @@ class Nav extends Component {
           <li>
             <Link to="/profile">Profile</Link>
           </li>
+          <li>
+            <button onClick={isAuthenticated() ? logout : login}>
+              {isAuthenticated() ? "Log Out" : "Log In"}
+            </button>
+          </li>
+
         </ul>
       </nav>
     );
