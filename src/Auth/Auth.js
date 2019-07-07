@@ -65,4 +65,12 @@ export default class Auth {
     }
     return accessToken;
   };
+
+  getProfile = cb => {
+    if (this.userProfile) return cb(this.userProfile);
+    this.auth0.client.userInfo(this.getAccessToken(), (err, profile) => {
+      if (profile) this.userProfile = profile;
+      cb(profile, err);
+    });
+  };
 }
