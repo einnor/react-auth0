@@ -19,7 +19,7 @@ class App extends Component {
         <div className="body">
           <Route path="/" exact render={props => <Home auth={this.auth} {...props} />} />
           <Route path="/callback" render={props => <Callback auth={this.auth} {...props} />} />
-          <Route path="/profile" component={Profile} />
+          <Route path="/profile" render={props => <Profile auth={this.auth} {...props} />} />
         </div>
       </>
     );
