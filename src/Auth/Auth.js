@@ -83,4 +83,11 @@ export default class Auth {
       cb(profile, err);
     });
   };
+
+  userHasScopes(scopes) {
+    const grantedScopes = (
+      JSON.parse(localStorage.getItem("scopes")) || ""
+    ).split(" ");
+    return scopes.every(scope => grantedScopes.includes(scope));
+  }
 }
