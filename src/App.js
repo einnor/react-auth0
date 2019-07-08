@@ -23,10 +23,10 @@ class App extends Component {
     const { auth } = this.state;
     return (
       <AuthContext.Provider value={auth}>
-        <Nav auth={this.auth} />
+        <Nav auth={auth} />
         <div className="body">
-          <Route path="/" exact render={props => <Home auth={this.auth} {...props} />} />
-          <Route path="/callback" render={props => <Callback auth={this.auth} {...props} />} />
+          <Route path="/" exact render={props => <Home auth={auth} {...props} />} />
+          <Route path="/callback" render={props => <Callback auth={auth} {...props} />} />
           <PrivateRoute path="/profile" component={Profile} />
           <Route path="/public" component={Public} />
           <PrivateRoute path="/private" component={Private} />
