@@ -28,6 +28,10 @@ class App extends Component {
 
   render() {
     const { auth } = this.state;
+
+    // Show loading message until the token renewal check is completed.
+    if (!this.state.tokenRenewalComplete) return "Loading...";
+
     return (
       <AuthContext.Provider value={auth}>
         <Nav auth={auth} />
