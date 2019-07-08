@@ -3,6 +3,7 @@ import auth0 from "auth0-js";
 const REDIRECT_ON_LOGIN = 'redirect_on_login';
 
 // Stored outside class since private
+// eslint-disable-next-line
 let _idToken = null;
 let _accessToken = null;
 let _scopes = null;
@@ -46,7 +47,7 @@ export default class Auth {
   setSession = authResult => {
     console.log(authResult);
     // set the time that the access token will expire
-    _expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
+    _expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
 
     // If there is a value on the `scope` param from the authResult,
     // use it to set scopes in the session for the user. Otherwise
