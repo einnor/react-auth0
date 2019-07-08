@@ -57,6 +57,7 @@ export default class Auth {
 
     _accessToken = authResult.accessToken;
     _idToken = authResult.idToken;
+    this.scheduleTokenRenewal();
   };
 
   isAuthenticated() {
