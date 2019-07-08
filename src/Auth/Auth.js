@@ -100,4 +100,9 @@ export default class Auth {
       if (cb) cb(err, result);
     });
   }
+
+  scheduleTokenRenewal() {
+    const delay = _expiresAt - Date.now();
+    if (delay > 0) setTimeout(() => this.renewToken(), delay);
+  }
 }
