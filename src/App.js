@@ -16,7 +16,14 @@ class App extends Component {
     super(props);
     this.state = {
       auth: new Auth(this.props.history),
+      tokenRenewalComplete: false,
     };
+  }
+
+  componentDidMount() {
+    this.state.auth.renewToken(() =>
+      this.setState({ tokenRenewalComplete: true })
+    );
   }
 
   render() {
